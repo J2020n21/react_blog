@@ -5,6 +5,8 @@ function App() {
   let [title,titleChange] = useState(['남자 코트 추천','플라스크 독학','대구 막창맛집']);
   let posts = '강남 우동 맛집';
   let [click,clickChange] = useState(0);
+  let [modal, setModal] = useState(0); //default 0 = false
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -32,11 +34,14 @@ function App() {
         <p>Post: Feb.17</p>
       </div>
       <div className="list">
-        <h4>{title[2]} <span onClick={()=>{clickChange(click+1)}}>👍</span>{click}</h4>
+        <h4 onClick={()=>{setModal(modal += 1);}}>{title[2]} <span onClick={()=>{clickChange(click+1)}}>👍</span>{click}</h4>
         <p>Post: Feb.17</p>
       </div>
 
-      <Modal> </Modal>
+      {
+        // use ternary operator (if statement)
+        modal % 2 == 1 ? <Modal/> : null
+      }
 
 
     </div>

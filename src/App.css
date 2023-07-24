@@ -61,3 +61,8 @@ div{
   background : #eee;
   text-align : left;
 }
+
+/* font */
+.font-grey{
+  color: grey;
+}

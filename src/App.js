@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   let [title,titleChange] = useState(['남자 코트 추천','플라스크 독학','대구 막창맛집']);
   let posts = '강남 우동 맛집';
-  let [click,clickChange] = useState(0);
+  let [click,clickChange] = useState([0,0,0]);
   let [modal, setModal] = useState(0); //default 0 = false
 
   return (
@@ -13,11 +13,11 @@ function App() {
         <h4>React blog</h4>
       </div>
 
-      <button onClick={()=>{
+      {/* <button onClick={()=>{
         let copy = [...title];
         copy[0] = '여자 코트 추천';
         titleChange(copy);
-      }}
+      }} //change the first post title to '여자코트추천'
         >Change</button>
 
       <button onClick={()=>{
@@ -36,7 +36,22 @@ function App() {
       <div className="list">
         <h4 onClick={()=>{setModal(modal += 1);}}>{title[2]} <span onClick={()=>{clickChange(click+1)}}>👍</span>{click}</h4>
         <p>Post: Feb.17</p>
-      </div>
+        <p className='font-grey'>click title: enable modal</p>
+      </div> */}
+
+      {
+        title.map(function(data, i){
+          return (
+            // key: unique value
+            <div className="list" key={i}>
+            <h4>{data} <span onClick={(e)=>{
+                console.log(e.target.id)}}>👍</span>{click[i]}</h4>
+            <p>Post: Feb.17</p>
+            <p>i: {i}</p>
+          </div>
+          )
+        })
+      }
 
       {
         // use ternary operator (if statement)

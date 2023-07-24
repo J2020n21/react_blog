@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   let [title,titleChange] = useState(['남자 코트 추천','플라스크 독학','대구 막창맛집']);
   let posts = '강남 우동 맛집';
-  let [click,clickChange] = useState([0,0,0]);
+  let [click,clickChange] = useState([1,0,0]);
   let [modal, setModal] = useState(0); //default 0 = false
 
   return (
@@ -41,11 +41,16 @@ function App() {
 
       {
         title.map(function(data, i){
-          return (
-            // key: unique value
+          return ( 
             <div className="list" key={i}>
-            <h4>{data} <span onClick={(e)=>{
-                console.log(e.target.id)}}>👍</span>{click[i]}</h4>
+            <h4>
+              {data}
+               <span onClick={()=>{
+                  let copy=[...click];
+                  copy[i] = copy[i] +1;
+                  clickChange(copy)
+                }}>👍</span>{click[i]}
+              </h4>
             <p>Post: Feb.17</p>
             <p>i: {i}</p>
           </div>

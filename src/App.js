@@ -7,7 +7,7 @@ function App() {
   let [title2,titleChange2] = useState(0);
   let [click,clickChange] = useState([0,0,0]);
   let [modal, setModal] = useState(0); //default 0 = false
-  var userText = '';
+  let [userText,setUserText] = useState("");
 
   return (
     <div className="App">
@@ -31,21 +31,24 @@ function App() {
                   clickChange(copy)
                 }}>👍</span>{click[i]}
               </h4>
-            <p>Post: Feb.17</p>
+            <p>Post: Feb.17</p> 
             </div>
           )
         })
       }
 
-      <input type="text" onChange={(e)=>{userText=e.target.value;
+      <input type="text" onChange={(e)=>{setUserText(userText=e.target.value);
         console.log({userText});
-      }} /> <button>submit</button>
+      }} /> 
+      <button onClick={(e)=>{
+          titleChange( title =>[...title, userText]);
+          clickChange(click =[...click, 0]);
+        }}>submit</button>
+      {/* 숙제2: 글마다 삭제버튼+기능: 버튼을 만든다>해당 버튼의 글을 삭제/안보이게 한다.*/ }
 
       {
         modal % 2 == 1? <Modal title={title}></Modal>:null
       }
-
-      <h3>{userText}</h3>
 
     </div>
     )

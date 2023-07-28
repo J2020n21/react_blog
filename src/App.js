@@ -32,6 +32,12 @@ function App() {
                 }}>👍</span>{click[i]}
               </h4>
             <p>Post: Feb.17</p> 
+            <button onClick={(e)=>{
+              let copy = [...title];
+              // titleChange(copy.splice(i,1)); //why this code doesn't work properly?
+              copy.splice(i,1);
+              titleChange(copy);
+            }}>Delete</button>
             </div>
           )
         })
@@ -41,10 +47,9 @@ function App() {
         console.log({userText});
       }} /> 
       <button onClick={(e)=>{
-          titleChange( title =>[...title, userText]);
+          titleChange(title =>[...title, userText]);
           clickChange(click =[...click, 0]);
         }}>submit</button>
-      {/* 숙제2: 글마다 삭제버튼+기능: 버튼을 만든다>해당 버튼의 글을 삭제/안보이게 한다.*/ }
 
       {
         modal % 2 == 1? <Modal title={title}></Modal>:null
